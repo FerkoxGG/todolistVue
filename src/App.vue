@@ -3,14 +3,10 @@
 <template>
   <div id="app">
     <h1>Crea una nueva tarea</h1>
-    <form @submit.prevent="addTask">
+    <form>
       <label for="task">Tarea</label>
-      <input
-        type="text"
-        v-model="newTask"
-        placeholder="Ingresa una nueva tarea"
-      />
-      <button type="submit">Crear</button>
+      <input type="text" id="task" v-model="task" />
+      <button type="button" @click="addTask">Crear</button>
     </form>
     <h1>Lista</h1>
     <ul>
@@ -26,16 +22,16 @@ export default {
   name: "App",
   data() {
     return {
-      tasks: [],
-      newTask: "",
+      task: "",
+      tasks: []
     };
   },
   methods: {
     addTask() {
       this.tasks.push({
-        name: this.newTask,
+        name: this.task,
       });
-      this.newTask = "";
+      this.task = "";
     },
   },
 };
